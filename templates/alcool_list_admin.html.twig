@@ -1,0 +1,41 @@
+{% extends 'admin.html.twig' %}
+
+{% block main %}
+
+
+<div class="grid grid-pad">
+{% for alc in alcools %}
+
+<div class="ingr">
+<div class="drop-img">
+<img src="/img_alcool/{{ alc.imglink }}" class="alcool">
+  <div class="dropdown-content">
+      <a href="{{ path('modify', {'name': alc.name}) }}">Modifier</a>
+      <a href="{{ path('delete', {'name': alc.name}) }}">Supprimer</a>
+  </div>
+</div>
+</div>
+
+
+{% endfor %}
+
+<div class="buttonPage">
+  {% if page != 1 %}
+  <div class="button">
+    <a href="{{ path('alcool_list_admin', {'page': page - 1}) }}" class="button">page {{ page - 1 }}</a>
+
+  </div>
+  {% endif %}
+  <div class="button">
+    page {{ page }}
+  </div>
+  {% if nbrAlcool - page * 16 >= 0 %}
+  <div class="button">
+    <a href="{{ path('alcool_list_admin', {'page': page + 1}) }}" class="button">page {{ page + 1 }}</a>
+  </div>
+  {% endif %}
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block css %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/article.css" />
+{% endblock %}
+
+{% block main %}
+
+    {{ form_start(delform) }}
+    {{ form_widget(delform) }}
+    {{ form_end(delform) }}
+
+{% endblock %}

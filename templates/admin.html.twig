@@ -1,0 +1,51 @@
+  {% extends 'base/base.html.twig' %}
+
+{% block css %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+{% endblock %}
+
+{% block title %}
+Admin
+{% endblock %}
+
+{% block header %}
+<nav class="navbar-fixed">
+    <ul class="menu">
+        <li class="menu"><img class="logo" src="/img_site/Winer.png" alt="winer" /></li>
+        <li class="menu"><a href="/home" class="menu">Accueil</a></li>
+        <li class="menu"><a href="{{ path('admin_hub') }}" class="menu">Admin Hub</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block main %}
+<div class="grid grid-pad">
+  <div class="col-1-2">
+    <ul class="admin_menu">
+      <li class="admin_menu">
+        <a href="{{ path('alcool_list_admin') }}" class="menu">Modify Alcool</a>
+      </li>
+      <li class="admin_menu">
+        <a href="{{ path('new') }}" class="menu">Add Alcool</a>
+      </li>
+      <li class="admin_menu">
+        <a href="/home" class="menu">Menu</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-1-2">
+    <ul class="admin_menu">
+      <li class="admin_menu">
+        <a href="/home" class="menu">Alcools</a>
+      </li>
+      <li class="admin_menu">
+        <a href="/home" class="menu">Recette</a>
+      </li>
+      <li class="admin_menu">
+        <a href="/home" class="menu">Menu</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

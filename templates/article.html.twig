@@ -1,0 +1,36 @@
+{% extends 'base/base.html.twig' %}
+
+
+{% block title %}{{alcool.name}}{% endblock %}
+{% block css %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/article.css" />
+{% endblock %}
+
+{% block article %}
+  <div class="article">
+
+    <div class="drop-img">
+        <img src="/img_alcool/{{alcool.imglink}}" class="article" alt="{{alcool.name}}">
+      <div class="dropdown-content">
+        {% for i in 1..5 %}
+          <a href="{{ path('alcool_vote', {'note': i ,'name': alcool.name}) }}">{{ i }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="nom">{{alcool.name}}</div>
+    <div class="type">{{alcool.type}}</div>
+    <hr>
+    <div class="desc">
+      <div class="desc_title">
+        Description :
+      </div>
+      <div class="desc_text">
+        {{alcool.desc}}
+      </div>
+    </div>
+    <div class="desc_note" style="width: {{alcool.notemoy*40}}px;">
+      <img src="/img_alcool/5stars.png" alt="note" class="note">
+    </div>
+  </div>
+{% endblock %}

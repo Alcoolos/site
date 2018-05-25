@@ -1,0 +1,49 @@
+
+
+img.alcool{
+  border: 3px solid #000000;
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  margin-top: 10px;
+  box-shadow: 2px 4px 3px rgba(0,0,0,.3);
+}
+
+img.alcool:hover{
+  filter:brightness(90%);
+}
+
+div.ingr{
+  /* position: relative; */
+  display: inline-block;
+  text-align: center;
+  padding: 0rem 0rem;
+  margin-bottom: 0.8rem;
+}
+
+.buttonPage{
+  text-align: center;
+
+
+}
+
+div.button{
+  font-family: 'Poiret One', cursive;
+  color: #000000;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+  font-size: 3rem ;
+  text-shadow: 2px 4px 3px rgba(0,0,0,.3);
+  display: inline-block;
+}
+
+a.button{
+  text-decoration: none;
+  color: #000000;
+}
+
+.button:hover{
+  color: red;
+}

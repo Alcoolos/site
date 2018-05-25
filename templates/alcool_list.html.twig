@@ -1,0 +1,41 @@
+{% extends 'base/base.html.twig' %}
+
+{% block css %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/list.css" />
+{% endblock %}
+
+{% block article %}
+
+
+<div class="grid grid-pad">
+{% for alc in alcool_list %}
+
+
+
+<a href="{{ path('alcool_show', {'name': alc.name }) }}" title="{{alc.name}}"><img src="/img_alcool/{{ alc.imglink }}" class="alcool"></a>
+
+
+
+{% endfor %}
+
+<div class="buttonPage">
+  {% if page != 1 %}
+  <div class="button">
+    <a href="{{ path('alcool_list', {'page': page - 1}) }}" class="button">page {{ page - 1 }}</a>
+
+  </div>
+  {% endif %}
+  <div class="button">
+    page {{ page }}
+  </div>
+  {% if nbrAlcool - page * 18 >= 0 %}
+  <div class="button">
+    <a href="{{ path('alcool_list', {'page': page + 1}) }}" class="button">page {{ page + 1 }}</a>
+  </div>
+  {% endif %}
+</div>
+
+</div>
+
+{% endblock %}

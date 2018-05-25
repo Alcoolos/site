@@ -1,0 +1,107 @@
+html{
+  margin-top: 45px;
+}
+
+ul.admin_menu{
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.admin_menu{
+  box-shadow: 2px 4px 3px rgba(0,0,0,.3);
+}
+
+li.admin_menu a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a.admin_menu:hover {
+    background-color: #111;
+}
+
+img.alcool{
+  border: 3px solid #000000;
+  border-radius: 50%;
+  width: 15rem;
+  height: 15rem;
+  margin-top: 10px;
+  box-shadow: 2px 4px 3px rgba(0,0,0,.3);
+}
+
+div.ingr{
+  /* position: relative; */
+  display: inline-block;
+  text-align: center;
+  padding: 0rem 0rem;
+  margin-bottom: 0.8rem;
+}
+
+img.alcool:hover{
+  filter:brightness(90%);
+}
+
+.buttonPage{
+  text-align: center;
+
+
+}
+
+div.button{
+  font-family: 'Poiret One', cursive;
+  color: #000000;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+  font-size: 3rem ;
+  text-shadow: 2px 4px 3px rgba(0,0,0,.3);
+  display: inline-block;
+}
+
+a.button{
+  text-decoration: none;
+  color: #000000;
+}
+
+.button:hover{
+  color: red;
+}
+
+.drop-img:hover .dropdown-content {
+    display: block;
+}
+
+.drop-img {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0.8rem 0.5rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
