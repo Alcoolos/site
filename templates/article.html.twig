@@ -13,9 +13,15 @@
     <div class="drop-img">
         <img src="/img_alcool/{{alcool.imglink}}" class="article" alt="{{alcool.name}}">
       <div class="dropdown-content">
+      {% if app.session.get("user") and voted == false %}
         {% for i in 1..5 %}
-          <a href="{{ path('alcool_vote', {'note': i ,'name': alcool.name}) }}">{{ i }}</a>
+          <a href="{{ path('alcool_vote', {'note': i ,'name': alcool.name}) }}"><img src="/img_site/1star.png" alt="etoile" title="{{i}}" style="width: 35px;height:35px;"></a>
         {% endfor %}
+      {% elseif app.session.get("user") and voted == true %}
+        <p>Tu as déjà voté!</p>
+      {% else %}
+        <p>Connecte toi pour voter!</p>
+      {% endif %}
       </div>
     </div>
     <div class="nom">{{alcool.name}}</div>
@@ -30,7 +36,7 @@
       </div>
     </div>
     <div class="desc_note" style="width: {{alcool.notemoy*40}}px;">
-      <img src="/img_alcool/5stars.png" alt="note" class="note">
+      <img src="/img_site/5stars.png" alt="note" class="note">
     </div>
   </div>
 {% endblock %}

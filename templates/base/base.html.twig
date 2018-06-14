@@ -44,6 +44,14 @@
                         <li><img class="logo" src="/img_site/Winer.png" alt="winer" /></li>
                         <li><a href="/" class="menu">Accueil</a></li>
                         <li><a href="/alcool">Alcool</a></li>
+                        {% if not(app.session.get("user")) %}
+                        <li><a href="/login">Connexion</a></li>
+                        <li><a href="/signup">Inscription</a></li>
+                        {% endif %}
+                        {% if app.session.get("user") %}
+                        <li><a href="/logout">Déconnexion</a></li>
+                        <li id="username"><a href="/">{{app.session.get("user").getUsername}}</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
                 {% endblock %}
@@ -64,7 +72,7 @@
 
                       <div class="top">
                           {% for alc in alcools %}
-                            <a href="{{ path('alcool_show', {'name': alc.name }) }}"><img src="/img_alcool/{{ alc.imglink }}" class="top-img"></a>
+                            <a href="{{ path('alcool_show', {'name': alc.name }) }}"><img src="/img_alcool/{{ alc.imglink }}" title="{{alc.name}}" class="top-img"></a>
                           {% endfor %}
                       </div>
                     </div>

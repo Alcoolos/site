@@ -18,7 +18,7 @@ class Notes
      * @ORM\Column(type="integer")
      */
     private $id;
-  
+
       /**
     * @ORM\ManyToOne(targetEntity="App\Entity\Produit")
     * @ORM\JoinColumn(nullable=true)
@@ -31,6 +31,11 @@ class Notes
      * @ORM\Column(type="float")
      */
     private $note;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="relation")
+     */
+    private $utilisateur;
 
     public function getProduit_id()
     {
@@ -61,5 +66,17 @@ class Notes
     public function setNote($note)
     {
         $this->note = $note;
+    }
+
+    public function getUtilisateur(): ?User
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?User $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
     }
 }

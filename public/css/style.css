@@ -17,6 +17,10 @@ header{
   position:absolute; */
 }
 
+#username{
+  margin-left: 10rem;
+}
+
 /*TITRE*/
 .bandeau{
   background-image: url(/img_site/pattern.jpg);

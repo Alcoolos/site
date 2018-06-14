@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Produit;
-use App\Entity\Cocktail;
+use App\Entity\User;
 use App\Entity\Notes;
 
 class ProduitController extends Controller
@@ -39,6 +39,8 @@ class ProduitController extends Controller
        */
       public function showAction($name)
       {
+        $session= $this->get('session');
+        $user=$session->get("user");
         $repository = $this->getDoctrine()->getRepository(Produit::class);
 
           $alcools = $repository->findallyouneed();
@@ -58,8 +60,26 @@ class ProduitController extends Controller
               );
           }
 
+          $allNotes = $this->getDoctrine()
+           ->getRepository(Notes::class)
+           ->findByProduct($alcool);
+
+
+          $count=0;
+          $voted=false;
+          if (!(empty($user)))
+          {
+            foreach ($allNotes as $aNote) {
+              $count = $count + 1;
+              if(!(empty($aNote->getUtilisateur())) && $aNote->getUtilisateur()->getId()==$user->getId()){
+                $voted=true;
+              }
+            }
+          }
+
+
           return $this->render('article.html.twig',
-          array('alcool' => $alcool,'alcools' => $alcools)
+          array('alcool' => $alcool,'alcools' => $alcools,'voted' => $voted)
       );
       }
 
@@ -68,6 +88,14 @@ class ProduitController extends Controller
         */
        public function voteAction($name,$note)
        {
+         $session= $this->get('session');
+         $userId=$session->get("user")->getId();
+
+         $repository = $this->getDoctrine()->getRepository(User::class);
+         $user = $repository->findOneBy([
+                  'id' => $userId,
+         ]);
+
          $repository = $this->getDoctrine()->getRepository(Produit::class);
          $alcool = $repository->findOneBy([
                   'name' => $name,
@@ -84,6 +112,7 @@ class ProduitController extends Controller
            $notes = new Notes();
            $notes->setNote($note);
            $notes->setProduit_id($alcool);
+           $notes->setUtilisateur($user);
 
            $em->persist($notes);
            $em->flush();
@@ -112,28 +141,6 @@ class ProduitController extends Controller
                'name' => $alcool->getName()
            ]);
        }
-
-      /**
- * @Route("/alcool/edit/{id}")
- */
-public function updateAction($id)
-{
-    $entityManager = $this->getDoctrine()->getManager();
-    $product = $entityManager->getRepository(Produit::class)->find($id);
-
-    if (!$product) {
-        throw $this->createNotFoundException(
-            'No product found for id '.$id
-        );
-    }
-
-    $product->setNotemoy(mt_rand(0, 50)/10);
-    $entityManager->flush();
-
-    return $this->redirectToRoute('alcool_show', [
-        'id' => $product->getId()
-    ]);
-}
 
 
 

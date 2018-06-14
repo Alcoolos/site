@@ -10,16 +10,26 @@ Admin
 {% endblock %}
 
 {% block header %}
+
 <nav class="navbar-fixed">
     <ul class="menu">
         <li class="menu"><img class="logo" src="/img_site/Winer.png" alt="winer" /></li>
         <li class="menu"><a href="/home" class="menu">Accueil</a></li>
         <li class="menu"><a href="{{ path('admin_hub') }}" class="menu">Admin Hub</a></li>
+        {% if not(app.session.get("user")) %}
+        <li><a href="/login">Connexion</a></li>
+        <li><a href="/signup">inscription</a></li>
+        {% endif %}
+        {% if app.session.get("user") %}
+        <li><a href="/logout">Déconnexion</a></li>
+        <li id="username"><a href="/signup">{{app.session.get("user").getUsername}}</a></li>
+        {% endif %}
     </ul>
 </nav>
 {% endblock %}
 
 {% block main %}
+{% if app.session.get("user") and app.session.get("user").getIsAdmin %}
 <div class="grid grid-pad">
   <div class="col-1-2">
     <ul class="admin_menu">
@@ -48,4 +58,6 @@ Admin
     </ul>
   </div>
 </div>
+
+{% endif %}
 {% endblock %}

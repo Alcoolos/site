@@ -89,12 +89,17 @@ div.desc{
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 0.8rem 0.5rem;
-    text-decoration: none;
     display: inline-block;
 }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1
+.dropdown-content p {
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.dropdown-content img:hover {
+  filter:brightness(90%);
 }
