@@ -50,7 +50,7 @@
                         {% endif %}
                         {% if app.session.get("user") %}
                         <li><a href="/logout">Déconnexion</a></li>
-                        <li id="username"><a href="/">{{app.session.get("user").getUsername}}</a></li>
+                        <li id="username"><a href="/profile" title="Voir profil">{{app.session.get("user").getUsername}}</a></li>
                         {% endif %}
                     </ul>
                 </nav>

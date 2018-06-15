@@ -1,0 +1,143 @@
+div.article{
+  position: relative;
+  min-height: 35rem;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 0.8rem 0rem;
+  box-shadow: 2px 6px 3px rgba(0,0,0,.3);
+  margin-bottom: 0.8rem;
+}
+
+div.enum ul {
+  text-align: center;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  list-style-type: disc;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+div.enum ul li {
+  display: block;
+  float: none;
+  color: #222222;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  text-decoration: none;
+}
+
+div.username{
+  font-weight: bold;
+  color: #000000;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+div.nom{
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+div.admin{
+  font-weight: bold;
+  color: #dd1111;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+div.admin a{
+  text-decoration: none;
+  color: #dd1111;
+}
+
+
+div.admin a:hover{
+  color: #dd6666;
+}
+
+div.desc_title{
+  color: #000000;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.7rem;
+  margin-bottom: 0.8rem;
+}
+
+div.desc_text{
+  color: #626262;
+  text-align: left;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+div.desc_note {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-bottom: 1rem;
+  height: 40px;
+  overflow: hidden;
+}
+
+div.desc_notes {
+  height: 80px;
+}
+
+img.note{
+  height: 40px;
+}
+
+div.desc{
+  padding: 1rem 0.4rem;
+  display: block;
+  width: auto;
+}
+
+.drop-img:hover .dropdown-content {
+    display: block;
+}
+
+.drop-img {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: inline-block;
+}
+
+.dropdown-content p {
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+#stat{
+  color: #000000;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.dropdown-content img:hover {
+  filter:brightness(90%);
+}

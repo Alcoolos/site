@@ -22,7 +22,12 @@ Admin
         {% endif %}
         {% if app.session.get("user") %}
         <li><a href="/logout">Déconnexion</a></li>
-        <li id="username"><a href="/signup">{{app.session.get("user").getUsername}}</a></li>
+        <li id="username"><a href="/profile" title="Voir profil">{{app.session.get("user").getUsername}}</a></li>
+        {% endif %}
+        {% if app.session.get("user") and app.session.get("user").getIsAdmin %}
+        <li id="username"><a href="{{ path('alcool_list_admin') }}" class="menu">Liste Alcools</a></li>
+        <li><a href="{{ path('new') }}" class="menu">Ajouter Alcool</a></li>
+        <li><a href="/admin/list/users" class="menu">Liste Utilisateurs</a></li>
         {% endif %}
     </ul>
 </nav>
@@ -30,34 +35,8 @@ Admin
 
 {% block main %}
 {% if app.session.get("user") and app.session.get("user").getIsAdmin %}
-<div class="grid grid-pad">
-  <div class="col-1-2">
-    <ul class="admin_menu">
-      <li class="admin_menu">
-        <a href="{{ path('alcool_list_admin') }}" class="menu">Modify Alcool</a>
-      </li>
-      <li class="admin_menu">
-        <a href="{{ path('new') }}" class="menu">Add Alcool</a>
-      </li>
-      <li class="admin_menu">
-        <a href="/home" class="menu">Menu</a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-1-2">
-    <ul class="admin_menu">
-      <li class="admin_menu">
-        <a href="/home" class="menu">Alcools</a>
-      </li>
-      <li class="admin_menu">
-        <a href="/home" class="menu">Recette</a>
-      </li>
-      <li class="admin_menu">
-        <a href="/home" class="menu">Menu</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
+  <img src='/img_site/power.gif' id='selector'/>
+{% else %}
+  <img src='/img_site/nopower.gif' id='selector'/>
 {% endif %}
 {% endblock %}

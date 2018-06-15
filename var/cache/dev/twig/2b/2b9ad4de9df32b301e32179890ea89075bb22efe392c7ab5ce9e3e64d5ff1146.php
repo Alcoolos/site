@@ -155,13 +155,24 @@ class __TwigTemplate_8b21f92253ce3fc1f24eb892fbb345e2791ed497c2c9a78bf2d8fd3f353
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["alcool"]) || array_key_exists("alcool", $context) ? $context["alcool"] : (function () { throw new Twig_Error_Runtime('Variable "alcool" does not exist.', 35, $this->source); })()), "desc", array()), "html", null, true);
         echo "
       </div>
+      <div class=\"desc_notes\">
+      <p id=\"stat\">
+        ";
+        // line 39
+        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["alcool"]) || array_key_exists("alcool", $context) ? $context["alcool"] : (function () { throw new Twig_Error_Runtime('Variable "alcool" does not exist.', 39, $this->source); })()), "notemoy", array()), 2), "html", null, true);
+        echo "/5 ";
+        echo twig_escape_filter($this->env, (isset($context["count"]) || array_key_exists("count", $context) ? $context["count"] : (function () { throw new Twig_Error_Runtime('Variable "count" does not exist.', 39, $this->source); })()), "html", null, true);
+        echo "
+      </p>
+      </div>
     </div>
     <div class=\"desc_note\" style=\"width: ";
-        // line 38
-        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["alcool"]) || array_key_exists("alcool", $context) ? $context["alcool"] : (function () { throw new Twig_Error_Runtime('Variable "alcool" does not exist.', 38, $this->source); })()), "notemoy", array()) * 40), "html", null, true);
+        // line 43
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, (isset($context["alcool"]) || array_key_exists("alcool", $context) ? $context["alcool"] : (function () { throw new Twig_Error_Runtime('Variable "alcool" does not exist.', 43, $this->source); })()), "notemoy", array()) * 40), "html", null, true);
         echo "px;\">
       <img src=\"/img_site/5stars.png\" alt=\"note\" class=\"note\">
     </div>
+
   </div>
 ";
         
@@ -184,7 +195,7 @@ class __TwigTemplate_8b21f92253ce3fc1f24eb892fbb345e2791ed497c2c9a78bf2d8fd3f353
 
     public function getDebugInfo()
     {
-        return array (  161 => 38,  155 => 35,  145 => 28,  141 => 27,  137 => 25,  133 => 23,  129 => 21,  126 => 20,  115 => 18,  110 => 17,  108 => 16,  101 => 14,  96 => 11,  87 => 10,  73 => 6,  64 => 5,  46 => 4,  15 => 1,);
+        return array (  171 => 43,  162 => 39,  155 => 35,  145 => 28,  141 => 27,  137 => 25,  133 => 23,  129 => 21,  126 => 20,  115 => 18,  110 => 17,  108 => 16,  101 => 14,  96 => 11,  87 => 10,  73 => 6,  64 => 5,  46 => 4,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -225,10 +236,16 @@ class __TwigTemplate_8b21f92253ce3fc1f24eb892fbb345e2791ed497c2c9a78bf2d8fd3f353
       <div class=\"desc_text\">
         {{alcool.desc}}
       </div>
+      <div class=\"desc_notes\">
+      <p id=\"stat\">
+        {{alcool.notemoy|number_format(2)}}/5 {{count}}
+      </p>
+      </div>
     </div>
     <div class=\"desc_note\" style=\"width: {{alcool.notemoy*40}}px;\">
       <img src=\"/img_site/5stars.png\" alt=\"note\" class=\"note\">
     </div>
+
   </div>
 {% endblock %}
 ", "article.html.twig", "/home/gperrier/Documents/web/site/templates/article.html.twig");

@@ -65,9 +65,11 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             default:
                 $routes = array(
                     '/admin' => array(array('_route' => 'admin_hub', '_controller' => 'App\\Controller\\AdminController::hub'), null, null, null),
+                    '/admin/list/users' => array(array('_route' => 'user_list_admin', '_controller' => 'App\\Controller\\AdminController::list_users'), null, null, null),
                     '/admin/new' => array(array('_route' => 'new', '_controller' => 'App\\Controller\\AdminController::addAlcool'), null, null, null),
                     '/login' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::login'), null, null, null),
                     '/logout' => array(array('_route' => 'logout', '_controller' => 'App\\Controller\\LoginController::disconnect'), null, null, null),
+                    '/profile' => array(array('_route' => 'profile', '_controller' => 'App\\Controller\\LoginController::showProfile'), null, null, null),
                     '/notes' => array(array('_route' => 'notes', '_controller' => 'App\\Controller\\NotesController::index'), null, null, null),
                     '/signup' => array(array('_route' => 'signup', '_controller' => 'App\\Controller\\SingupController::signup'), null, null, null),
                     '/home' => array(array('_route' => 'home', '_controller' => 'App\\Controller\\WelcomeController::getfirst10'), null, null, null),
@@ -105,30 +107,36 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     .'|/a(?'
                         .'|dmin/(?'
                             .'|list/alcool(?:/(\\d+))?(*:42)'
-                            .'|modify/([^/]++)(*:64)'
-                            .'|delete/([^/]++)(*:86)'
+                            .'|modify/(?'
+                                .'|([^/]++)(*:67)'
+                                .'|user/([^/]++)(*:87)'
+                            .')'
+                            .'|delete/(?'
+                                .'|([^/]++)(*:113)'
+                                .'|user/([^/]++)(*:134)'
+                            .')'
                         .')'
                         .'|lcool(?'
-                            .'|(?:/(\\d+))?(*:113)'
+                            .'|(?:/(\\d+))?(*:163)'
                             .'|/(?'
-                                .'|([^/]++)(*:133)'
-                                .'|vote/([^/]++)/(\\d+)(*:160)'
+                                .'|([^/]++)(*:183)'
+                                .'|vote/([^/]++)/(\\d+)(*:210)'
                             .')'
                         .')'
                     .')'
                     .'|/_(?'
-                        .'|error/(\\d+)(?:\\.([^/]++))?(*:202)'
-                        .'|wdt/([^/]++)(*:222)'
+                        .'|error/(\\d+)(?:\\.([^/]++))?(*:252)'
+                        .'|wdt/([^/]++)(*:272)'
                         .'|profiler/([^/]++)(?'
                             .'|/(?'
-                                .'|search/results(*:268)'
-                                .'|router(*:282)'
+                                .'|search/results(*:318)'
+                                .'|router(*:332)'
                                 .'|exception(?'
-                                    .'|(*:302)'
-                                    .'|\\.css(*:315)'
+                                    .'|(*:352)'
+                                    .'|\\.css(*:365)'
                                 .')'
                             .')'
-                            .'|(*:325)'
+                            .'|(*:375)'
                         .')'
                     .')'
                 .')$}sD',
@@ -140,18 +148,20 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     default:
                         $routes = array(
                             42 => array(array('_route' => 'alcool_list_admin', 'page' => 1, '_controller' => 'App\\Controller\\AdminController::list_ingr'), array('page'), null, null),
-                            64 => array(array('_route' => 'modify', '_controller' => 'App\\Controller\\AdminController::modifyAlcool'), array('name'), null, null),
-                            86 => array(array('_route' => 'delete', '_controller' => 'App\\Controller\\AdminController::deleteAlcool'), array('name'), null, null),
-                            113 => array(array('_route' => 'alcool_list', 'page' => 1, '_controller' => 'App\\Controller\\ProduitController::list_ingr'), array('page'), null, null),
-                            133 => array(array('_route' => 'alcool_show', '_controller' => 'App\\Controller\\ProduitController::showAction'), array('name'), null, null),
-                            160 => array(array('_route' => 'alcool_vote', '_controller' => 'App\\Controller\\ProduitController::voteAction'), array('name', 'note'), null, null),
-                            202 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
-                            222 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
-                            268 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
-                            282 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
-                            302 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
-                            315 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
-                            325 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
+                            67 => array(array('_route' => 'modify', '_controller' => 'App\\Controller\\AdminController::modifyAlcool'), array('name'), null, null),
+                            87 => array(array('_route' => 'modify_user', '_controller' => 'App\\Controller\\AdminController::modifyUser'), array('id'), null, null),
+                            113 => array(array('_route' => 'delete', '_controller' => 'App\\Controller\\AdminController::deleteAlcool'), array('name'), null, null),
+                            134 => array(array('_route' => 'delete_user', '_controller' => 'App\\Controller\\AdminController::deleteUser'), array('id'), null, null),
+                            163 => array(array('_route' => 'alcool_list', 'page' => 1, '_controller' => 'App\\Controller\\ProduitController::list_ingr'), array('page'), null, null),
+                            183 => array(array('_route' => 'alcool_show', '_controller' => 'App\\Controller\\ProduitController::showAction'), array('name'), null, null),
+                            210 => array(array('_route' => 'alcool_vote', '_controller' => 'App\\Controller\\ProduitController::voteAction'), array('name', 'note'), null, null),
+                            252 => array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null),
+                            272 => array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null),
+                            318 => array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null),
+                            332 => array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null),
+                            352 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
+                            365 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
+                            375 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
                         );
 
                         list($ret, $vars, $requiredMethods, $requiredSchemes) = $routes[$m];
@@ -177,7 +187,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $ret;
                 }
 
-                if (325 === $m) {
+                if (375 === $m) {
                     break;
                 }
                 $regex = substr_replace($regex, 'F', $m - $offset, 1 + strlen($m));

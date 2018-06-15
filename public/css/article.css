@@ -60,6 +60,10 @@ div.desc_note {
   overflow: hidden;
 }
 
+div.desc_notes {
+  height: 80px;
+}
+
 img.note{
   height: 40px;
 }
@@ -95,6 +99,13 @@ div.desc{
 .dropdown-content p {
   color: #000000;
   font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+#stat{
+  color: #000000;
   font-size: 1rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;

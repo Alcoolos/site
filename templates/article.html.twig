@@ -34,9 +34,15 @@
       <div class="desc_text">
         {{alcool.desc}}
       </div>
+      <div class="desc_notes">
+      <p id="stat">
+        {{alcool.notemoy|number_format(2)}}/5 {{count}}
+      </p>
+      </div>
     </div>
     <div class="desc_note" style="width: {{alcool.notemoy*40}}px;">
       <img src="/img_site/5stars.png" alt="note" class="note">
     </div>
+
   </div>
 {% endblock %}

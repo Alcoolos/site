@@ -118,13 +118,27 @@ class __TwigTemplate_e32b2d6120da5d492f5b801931c368be0b203e7decb4b9bee6eb9830237
         if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 23, $this->source); })()), "session", array()), "get", array(0 => "user"), "method")) {
             // line 24
             echo "        <li><a href=\"/logout\">Déconnexion</a></li>
-        <li id=\"username\"><a href=\"/signup\">";
+        <li id=\"username\"><a href=\"/profile\" title=\"Voir profil\">";
             // line 25
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 25, $this->source); })()), "session", array()), "get", array(0 => "user"), "method"), "getUsername", array()), "html", null, true);
             echo "</a></li>
         ";
         }
         // line 27
+        echo "        ";
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 27, $this->source); })()), "session", array()), "get", array(0 => "user"), "method") && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 27, $this->source); })()), "session", array()), "get", array(0 => "user"), "method"), "getIsAdmin", array()))) {
+            // line 28
+            echo "        <li id=\"username\"><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("alcool_list_admin");
+            echo "\" class=\"menu\">Liste Alcools</a></li>
+        <li><a href=\"";
+            // line 29
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new");
+            echo "\" class=\"menu\">Ajouter Alcool</a></li>
+        <li><a href=\"/admin/list/users\" class=\"menu\">Liste Utilisateurs</a></li>
+        ";
+        }
+        // line 32
         echo "    </ul>
 </nav>
 ";
@@ -136,7 +150,7 @@ class __TwigTemplate_e32b2d6120da5d492f5b801931c368be0b203e7decb4b9bee6eb9830237
 
     }
 
-    // line 31
+    // line 36
     public function block_main($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -145,44 +159,14 @@ class __TwigTemplate_e32b2d6120da5d492f5b801931c368be0b203e7decb4b9bee6eb9830237
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "main"));
 
-        // line 32
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 32, $this->source); })()), "session", array()), "get", array(0 => "user"), "method") && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 32, $this->source); })()), "session", array()), "get", array(0 => "user"), "method"), "getIsAdmin", array()))) {
-            // line 33
-            echo "<div class=\"grid grid-pad\">
-  <div class=\"col-1-2\">
-    <ul class=\"admin_menu\">
-      <li class=\"admin_menu\">
-        <a href=\"";
-            // line 37
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("alcool_list_admin");
-            echo "\" class=\"menu\">Modify Alcool</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"";
+        // line 37
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 37, $this->source); })()), "session", array()), "get", array(0 => "user"), "method") && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 37, $this->source); })()), "session", array()), "get", array(0 => "user"), "method"), "getIsAdmin", array()))) {
+            // line 38
+            echo "  <img src='/img_site/power.gif' id='selector'/>
+";
+        } else {
             // line 40
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new");
-            echo "\" class=\"menu\">Add Alcool</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Menu</a>
-      </li>
-    </ul>
-  </div>
-  <div class=\"col-1-2\">
-    <ul class=\"admin_menu\">
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Alcools</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Recette</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Menu</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
+            echo "  <img src='/img_site/nopower.gif' id='selector'/>
 ";
         }
         
@@ -205,7 +189,7 @@ class __TwigTemplate_e32b2d6120da5d492f5b801931c368be0b203e7decb4b9bee6eb9830237
 
     public function getDebugInfo()
     {
-        return array (  163 => 40,  157 => 37,  151 => 33,  149 => 32,  140 => 31,  128 => 27,  123 => 25,  120 => 24,  117 => 23,  112 => 20,  110 => 19,  106 => 18,  99 => 13,  90 => 12,  79 => 9,  70 => 8,  56 => 4,  47 => 3,  15 => 1,);
+        return array (  169 => 40,  165 => 38,  163 => 37,  154 => 36,  142 => 32,  136 => 29,  131 => 28,  128 => 27,  123 => 25,  120 => 24,  117 => 23,  112 => 20,  110 => 19,  106 => 18,  99 => 13,  90 => 12,  79 => 9,  70 => 8,  56 => 4,  47 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -234,7 +218,12 @@ Admin
         {% endif %}
         {% if app.session.get(\"user\") %}
         <li><a href=\"/logout\">Déconnexion</a></li>
-        <li id=\"username\"><a href=\"/signup\">{{app.session.get(\"user\").getUsername}}</a></li>
+        <li id=\"username\"><a href=\"/profile\" title=\"Voir profil\">{{app.session.get(\"user\").getUsername}}</a></li>
+        {% endif %}
+        {% if app.session.get(\"user\") and app.session.get(\"user\").getIsAdmin %}
+        <li id=\"username\"><a href=\"{{ path('alcool_list_admin') }}\" class=\"menu\">Liste Alcools</a></li>
+        <li><a href=\"{{ path('new') }}\" class=\"menu\">Ajouter Alcool</a></li>
+        <li><a href=\"/admin/list/users\" class=\"menu\">Liste Utilisateurs</a></li>
         {% endif %}
     </ul>
 </nav>
@@ -242,35 +231,9 @@ Admin
 
 {% block main %}
 {% if app.session.get(\"user\") and app.session.get(\"user\").getIsAdmin %}
-<div class=\"grid grid-pad\">
-  <div class=\"col-1-2\">
-    <ul class=\"admin_menu\">
-      <li class=\"admin_menu\">
-        <a href=\"{{ path('alcool_list_admin') }}\" class=\"menu\">Modify Alcool</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"{{ path('new') }}\" class=\"menu\">Add Alcool</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Menu</a>
-      </li>
-    </ul>
-  </div>
-  <div class=\"col-1-2\">
-    <ul class=\"admin_menu\">
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Alcools</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Recette</a>
-      </li>
-      <li class=\"admin_menu\">
-        <a href=\"/home\" class=\"menu\">Menu</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
+  <img src='/img_site/power.gif' id='selector'/>
+{% else %}
+  <img src='/img_site/nopower.gif' id='selector'/>
 {% endif %}
 {% endblock %}
 ", "admin.html.twig", "/home/gperrier/Documents/web/site/templates/admin.html.twig");

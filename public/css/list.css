@@ -21,11 +21,31 @@ div.ingr{
   margin-bottom: 0.8rem;
 }
 
-.buttonPage{
+.pagination{
+  width: 50%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 100px;
+  display: inline-block;
   text-align: center;
-
-
 }
+
+.pagination a {
+    transition: background-color .3s;
+    border-radius: 5px;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 div.button{
   font-family: 'Poiret One', cursive;

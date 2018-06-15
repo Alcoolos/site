@@ -1,10 +1,25 @@
 {% extends 'base/base.html.twig' %}
 
 
+
       {% block title %}HUB{% endblock %}
+      {% block css %}
+        {{ parent() }}
+        <link rel="stylesheet" type="text/css" href="/css/welcome.css" />
+      {% endblock %}
         {% block article %}
 
+        <p class="title">Bienvenue sur Éthylopédia</p>
+        <p class="text">
+          Éthylopédia est un site de recensement d'alcool créé dans le cadre d'un projet de développement web.
+           Il a été rendu possible grâce au fantastique travail de Guillaume Perrier, Lya Frétigné et un petit peu Laetitia Hallé malheureusement partie trop tôt.
+           <p class="text">
+            Sur ce site, vous trouverez forcément votre bonheur puisque comme le vieil adage dit « in vino veritas », autant souligner d'entrée de jeu que les bienfaits pour la santé ne croissent pas nécessairement avec l'usage et que « la modération a bien meilleur goût ».
+             Ainsi, la très grande majorité des études montrent que prendre une à deux consommations (une consommation = 13 g d'alcool) par jour fournit une certaine protection contre les troubles cardiovasculaires et coronariens, alors consulter notre encyclopédie d'alcool, consommer.
+              Consommer avec ou sans modération, mais toujours avec plaisir.
+               Ah ceux-là, modération, plaisir toujours là pour nous !
+        </p>
+      </p>
+      <img src="/img_site/poney.jpg" class="poney" title="Nos 4 jolies images" alt"Poney en photo">
 
-
-        <h1> WELCOME!!! </h1>
-        {% endblock %}
+      {% endblock %}

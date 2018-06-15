@@ -35,7 +35,7 @@ class Produit
     private $desc;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\NotBlank(message="Please, upload the product image as a jpg file.")
      * @Assert\File(mimeTypes={ "image/jpeg" })

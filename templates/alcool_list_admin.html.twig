@@ -8,10 +8,10 @@
 
 <div class="ingr">
 <div class="drop-img">
-<img src="/img_alcool/{{ alc.imglink }}" class="alcool">
+<img title="{{alc.name}}" src="/img_alcool/{{ alc.imglink }}" class="alcool">
   <div class="dropdown-content">
       <a href="{{ path('modify', {'name': alc.name}) }}">Modifier</a>
-      <a href="{{ path('delete', {'name': alc.name}) }}">Supprimer</a>
+      <a href="{{ path('delete', {'name': alc.name}) }}" class="del">Supprimer</a>
   </div>
 </div>
 </div>
@@ -19,22 +19,129 @@
 
 {% endfor %}
 
-<div class="buttonPage">
-  {% if page != 1 %}
-  <div class="button">
-    <a href="{{ path('alcool_list_admin', {'page': page - 1}) }}" class="button">page {{ page - 1 }}</a>
+<div class="pagination">
+
+    {% if page != 1 %}
+      <a href="{{ path('alcool_list_admin', {'page': page-1}) }}"><<</a>
+    {% endif %}
+{% if nbrAlcool//16+1 <=10 %}
+  {% if nbrAlcool%16==0 %}
+    {% for i in 1..(nbrAlcool//16) %}
+
+    {% if i==page %}
+      <a class="active" href="{{ path('alcool_list_admin', {'page': i}) }}">{{i}}</a>
+    {% else %}
+      <a href="{{ path('alcool_list_admin', {'page': i}) }}">{{i}}</a>
+    {% endif %}
+    {% endfor %}
+  {% else %}
+    {% for i in 1..(nbrAlcool//16+1) %}
+
+    {% if i==page %}
+      <a class="active" href="{{ path('alcool_list_admin', {'page': i}) }}">{{i}}</a>
+    {% else %}
+      <a href="{{ path('alcool_list_admin', {'page': i}) }}">{{i}}</a>
+    {% endif %}
+    {% endfor %}
+  {% endif %}
+{% else %}
+  {% if page==1 %}
+    <a class="active" href="{{ path('alcool_list_admin', {'page': 1}) }}">{{1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 2}) }}">{{2}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 3}) }}">{{3}}</a>
+  {% elseif page==2 %}
+    <a href="{{ path('alcool_list_admin', {'page': 1}) }}">{{1}}</a>
+    <a class="active" href="{{ path('alcool_list_admin', {'page': 2}) }}">{{2}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 3}) }}">{{3}}</a>
+  {% elseif page==3 %}
+    <a href="{{ path('alcool_list_admin', {'page': 1}) }}">{{1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 2}) }}">{{2}}</a>
+    <a class="active" href="{{ path('alcool_list_admin', {'page': 3}) }}">{{3}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 4}) }}">{{4}}</a>
+  {% elseif page==4 %}
+    <a href="{{ path('alcool_list_admin', {'page': 1}) }}">{{1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 2}) }}">{{2}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 3}) }}">{{3}}</a>
+    <a class="active" href="{{ path('alcool_list_admin', {'page': 4}) }}">{{4}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 5}) }}">{{5}}</a>
+  {% else %}
+    <a href="{{ path('alcool_list_admin', {'page': 1}) }}">{{1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 2}) }}">{{2}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': 3}) }}">{{3}}</a>
+  {% endif %}
+    <a>...</a>
+  {% if nbrAlcool%16==0 %}
+    {% if page >4 and page<(nbrAlcool/16-3) %}
+    <a href="{{ path('alcool_list_admin', {'page': page-1}) }}">{{page-1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': page}) }}">{{page}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': page+1}) }}">{{page+1}}</a>
+    {% endif %}
+  {% else %}
+    {% if page >4 and page<(nbrAlcool//16-3+1) %}
+    <a href="{{ path('alcool_list_admin', {'page': page-1}) }}">{{page-1}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': page}) }}">{{page}}</a>
+    <a href="{{ path('alcool_list_admin', {'page': page+1}) }}">{{page+1}}</a>
+    {% endif %}
+  {% endif %}
+  {% if nbrAlcool%16==0 %}
+    {% if page==nbrAlcool/16 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-2}) }}">{{nbrAlcool/16-2}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-1}) }}">{{nbrAlcool/16-1}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool/16}) }}">{{nbrAlcool/16}}</a>
+    {% elseif page==nbrAlcool/16-1 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-2}) }}">{{nbrAlcool/16-2}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-1}) }}">{{nbrAlcool/16-1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16}) }}">{{nbrAlcool/16}}</a>
+    {% elseif page==nbrAlcool/16-2 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-3}) }}">{{nbrAlcool/16-3}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-2}) }}">{{nbrAlcool/16-2}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-1}) }}">{{nbrAlcool/16-1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16}) }}">{{nbrAlcool/16}}</a>
+    {% elseif page==nbrAlcool/16-3 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-4}) }}">{{nbrAlcool/16-4}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-3}) }}">{{nbrAlcool/16-3}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-2}) }}">{{nbrAlcool/16-2}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-1}) }}">{{nbrAlcool/16-1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16}) }}">{{nbrAlcool/16}}</a>
+    {% else %}
+      <a>...</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-2}) }}">{{nbrAlcool/16-2}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16-1}) }}">{{nbrAlcool/16-1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool/16}) }}">{{nbrAlcool/16}}</a>
+    {% endif %}
+  {% else %}
+    {% if page==nbrAlcool//16+1 %}
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-2+1}) }}">{{nbrAlcool//16-2+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-1+1}) }}">{{nbrAlcool//16-1+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16+1}) }}">{{nbrAlcool//16+1}}</a>
+    {% elseif page==nbrAlcool//16-1+1 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-2+1}) }}">{{nbrAlcool//16-2+1}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-1+1}) }}">{{nbrAlcool//16-1+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16+1}) }}">{{nbrAlcool//16+1}}</a>
+    {% elseif page==nbrAlcool//16-2+1 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-3+1}) }}">{{nbrAlcool//16-3+1}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-2+1}) }}">{{nbrAlcool//16-2+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-1+1}) }}">{{nbrAlcool//16-1+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16+1}) }}">{{nbrAlcool//16+1}}</a>
+    {% elseif page==nbrAlcool//16-3+1 %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-4+1}) }}">{{nbrAlcool//16-4+1}}</a>
+      <a class="active" href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-3+1}) }}">{{nbrAlcool//16-3+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-2+1}) }}">{{nbrAlcool//16-2+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-1+1}) }}">{{nbrAlcool//16-1+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16+1}) }}">{{nbrAlcool//16+1}}</a>
+    {% else %}
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-2+1}) }}">{{nbrAlcool//16-2+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16-1+1}) }}">{{nbrAlcool//16-1+1}}</a>
+      <a href="{{ path('alcool_list_admin', {'page': nbrAlcool//16+1}) }}">{{nbrAlcool//16+1}}</a>
+    {% endif %}
+  {% endif %}
+{% endif %}
+  {% if nbrAlcool - page * 16 >= 0 %}
+    <a href="{{ path('alcool_list_admin', {'page': page+1}) }}">>></a>
+  {% endif %}
+
 
   </div>
-  {% endif %}
-  <div class="button">
-    page {{ page }}
-  </div>
-  {% if nbrAlcool - page * 16 >= 0 %}
-  <div class="button">
-    <a href="{{ path('alcool_list_admin', {'page': page + 1}) }}" class="button">page {{ page + 1 }}</a>
-  </div>
-  {% endif %}
-</div>
 
 </div>
 

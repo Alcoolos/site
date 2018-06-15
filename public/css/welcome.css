@@ -1,0 +1,12 @@
+.title {
+  font-size: 3rem;
+  color: #111111;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 1.5rem;
+  color: #666666;
+  font-family: 'Oswald', sans-serif;
+}

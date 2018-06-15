@@ -271,7 +271,7 @@ class __TwigTemplate_065d0ba6c0ca5620c28d1fd46e9d9b3f672f7c122e1fca580f070e14c47
         if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 51, $this->source); })()), "session", array()), "get", array(0 => "user"), "method")) {
             // line 52
             echo "                        <li><a href=\"/logout\">Déconnexion</a></li>
-                        <li id=\"username\"><a href=\"/\">";
+                        <li id=\"username\"><a href=\"/profile\" title=\"Voir profil\">";
             // line 53
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 53, $this->source); })()), "session", array()), "get", array(0 => "user"), "method"), "getUsername", array()), "html", null, true);
             echo "</a></li>
@@ -495,7 +495,7 @@ class __TwigTemplate_065d0ba6c0ca5620c28d1fd46e9d9b3f672f7c122e1fca580f070e14c47
                         {% endif %}
                         {% if app.session.get(\"user\") %}
                         <li><a href=\"/logout\">Déconnexion</a></li>
-                        <li id=\"username\"><a href=\"/\">{{app.session.get(\"user\").getUsername}}</a></li>
+                        <li id=\"username\"><a href=\"/profile\" title=\"Voir profil\">{{app.session.get(\"user\").getUsername}}</a></li>
                         {% endif %}
                     </ul>
                 </nav>

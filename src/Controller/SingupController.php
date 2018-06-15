@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
+use App\Entity\Produit;
 
 class SingupController extends Controller
 {
@@ -58,8 +59,12 @@ class SingupController extends Controller
             return $this->redirectToRoute('home');
         }
 
+        $alcool = $this->getDoctrine()
+            ->getRepository(Produit::class)
+            ->findallyouneed();
+
         return $this->render('singup/index.html.twig', array(
-            'form' => $form->createView(),
+            'form' => $form->createView(),'alcools'=>$alcool
         ));
     }
 }

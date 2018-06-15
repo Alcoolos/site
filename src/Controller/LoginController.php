@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\User;
+use App\Entity\Produit;
+use App\Entity\Notes;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +22,10 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+
+      $alcool = $this->getDoctrine()
+          ->getRepository(Produit::class)
+          ->findallyouneed();
         // just setup a fresh $task object (remove the dummy data)
         $user = new User();
 
@@ -47,12 +53,14 @@ class LoginController extends Controller
             }
 
             return $this->render('login/index.html.twig', array(
-                'form' => $form->createView(),'response'=>"Mauvais identifiant ou mot de passe"
+                'form' => $form->createView(),'response'=>"Mauvais identifiant ou mot de passe",'alcools'=>$alcool
             ));
         }
 
+
+
         return $this->render('login/index.html.twig', array(
-            'form' => $form->createView(),'response'=>""
+            'form' => $form->createView(),'response'=>"",'alcools'=>$alcool
         ));
 
 
@@ -62,10 +70,41 @@ class LoginController extends Controller
      * @Route("/logout", name="logout")
      */
 
-    public function disconnect()
+    public function disconnect(Request $request)
     {
         $session= $this->get('session');
         $session->invalidate();
-        return $this->redirectToRoute('home');
+
+          return $this->redirectToRoute('home');
+
+
+
+
+
+    }
+
+    /**
+     * @Route("/profile", name="profile")
+     */
+
+    public function showProfile()
+    {
+
+      $session= $this->get('session');
+      $user = $session->get("user");
+
+      $repository = $this->getDoctrine()->getRepository(Notes::class);
+      $notes = $repository->findBy([
+          'utilisateur' => $user,
+      ]);
+
+
+      $alcool = $this->getDoctrine()
+          ->getRepository(Produit::class)
+          ->findallyouneed();
+
+        return $this->render('profil.html.twig',
+        array('alcools' => $alcool,'notes'=>$notes)
+        );
     }
 }

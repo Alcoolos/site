@@ -1,0 +1,24 @@
+{% extends 'admin.html.twig' %}
+
+{% block main %}
+
+
+<div class="grid grid-pad">
+{% for user in users %}
+
+
+<div class="enum">
+  <ul>
+    <li>
+      <p class="username">{{user.username}}</p>
+      <a class="enum" href="{{ path('modify_user', {'id': user.id}) }}">Modifier</a>
+      <a href="{{ path('delete_user', {'id': user.id}) }}" class="del">Supprimer</a>
+    </li>
+  </ul>
+</div>
+
+{% endfor %}
+
+
+
+{% endblock %}

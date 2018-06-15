@@ -1,0 +1,44 @@
+{% extends 'base/base.html.twig' %}
+
+
+{% block title %}Profil{% endblock %}
+{% block css %}
+  {{ parent() }}
+  <link rel="stylesheet" type="text/css" href="/css/profil.css" />
+{% endblock %}
+
+{% block main %}
+  <div class="grid grid-pad">
+  <div class="article">
+    <div class="username">{{app.session.get("user").getUsername}}</div>
+    <div class="nom">{{app.session.get("user").getFirstName}} - {{app.session.get("user").getLastName}}</div>
+    {% if app.session.get("user").getIsAdmin %}
+    <div class="admin"><a href="/admin" title="Administration">ADMIN</a></div>
+    {% endif %}
+    <hr>
+    <div class="desc">
+      <div class="desc_title">
+        Email :
+      </div>
+      <div class="desc_text">
+        {{app.session.get("user").getEMail}}
+      </div>
+      <div class="desc_title">
+        Mes notes :
+      </div>
+    </div>
+    <div class="enum">
+        <ul>
+          <hr>
+        {% for note in notes %}
+
+          <li>{{app.session.get("user").getUsername}} : {{note.getNote}}/5 pour {{note.getProduit_id.getName}}</li>
+          <hr>
+        {% endfor %}
+        </ul>
+    </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}

@@ -65,21 +65,26 @@ class ProduitController extends Controller
            ->findByProduct($alcool);
 
 
-          $count=0;
+          $counter=0;
           $voted=false;
           if (!(empty($user)))
           {
             foreach ($allNotes as $aNote) {
-              $count = $count + 1;
+              $counter = $counter + 1;
               if(!(empty($aNote->getUtilisateur())) && $aNote->getUtilisateur()->getId()==$user->getId()){
                 $voted=true;
               }
             }
           }
-
+          $count="";
+          $count = "(".$counter." vote";
+          if($counter > 1){
+            $count = $count."s";
+          }
+          $count = $count.")";
 
           return $this->render('article.html.twig',
-          array('alcool' => $alcool,'alcools' => $alcools,'voted' => $voted)
+          array('alcool' => $alcool,'alcools' => $alcools,'voted' => $voted,'count'=>$count)
       );
       }
 
