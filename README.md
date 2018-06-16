@@ -23,3 +23,9 @@ compte admin:
   
 Accés au mode admin depuis le profil ou en utilisant l'url /admin
 
+=============FEATURES===============================================
+
+Gestion de comptes utilisateur
+Gestion de notes sur les produits (passer la souris sur l'image)
+Vue des notes d'un utilisateur
+Gestion admin
